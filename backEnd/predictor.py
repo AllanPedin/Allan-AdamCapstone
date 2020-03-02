@@ -26,3 +26,9 @@ model = keras.Sequential([
     keras.layers.Dense(128, activation='sigmoid'),#activation function sigmoid is a classic
     keras.layers.Dense(10, activation='softmax')#dunno what a softma is
 ])
+
+model.compile(optimizer='adam',
+              loss='sparse_categorical_crossentropy',
+              metrics=['accuracy'])
+
+model.fit(train_games, train_labels, epochs=10) #epochs = 
