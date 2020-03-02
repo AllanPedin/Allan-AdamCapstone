@@ -31,4 +31,16 @@ model.compile(optimizer='adam',
               loss='sparse_categorical_crossentropy',
               metrics=['accuracy'])
 
-model.fit(train_games, train_labels, epochs=10) #epochs = 
+model.fit(train_games, train_labels, epochs=10) #epochs = times to run over same data
+
+#train
+test_loss, test_acc = model.evaluate(test_games,  test_labels, verbose=2)
+
+print('\nTest accuracy:', test_acc)
+
+
+#predict on test data
+predictions = model.predict(test_games)
+
+predictions[0]#see what it predicted
+
