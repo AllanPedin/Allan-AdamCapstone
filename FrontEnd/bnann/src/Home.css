@@ -1,0 +1,16 @@
+.gameList{
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;
+
+    margin: auto;
+    margin-top: 100px;
+    width: 50%;
+    border: 3px solid green;
+    padding: 10px;
+    padding-top: 25px;
+}
+.game{
+    margin: auto;
+    padding: 10px;
+}
