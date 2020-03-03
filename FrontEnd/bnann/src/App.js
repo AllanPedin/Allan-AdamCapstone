@@ -1,6 +1,6 @@
 import React from 'react';
-import Home from './Home.js'
-import About from './About.js'
+import Home from './Routes/Home.js'
+import About from './Routes/About/About.js'
 
 import {
   BrowserRouter as Router,
