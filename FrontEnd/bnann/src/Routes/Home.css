@@ -12,5 +12,22 @@
 }
 .game{
     margin: auto;
+    display: flex;
+    justify-content: space-evenly;
+
     padding: 10px;
+}
+.teamLeft{
+    font-size: 50%;
+    width: 20em;
+    height: 100%;
+    line-height: 100%;
+    text-align: left;
+}
+.teamRight{
+    font-size: 50%;
+    width: 20em;
+    height: 100%;
+    line-height: 100%;
+    text-align: Right;
 }

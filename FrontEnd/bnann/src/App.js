@@ -13,12 +13,12 @@ import './App.css';
 export default function App() {
   return (
     <Router>
-      <div>
+      <div className='root'>
         <nav className='navBar'>
-            <div>
+            <div className='navButton'>
               <Link to="/">Home</Link>
             </div>
-            <div>
+            <div className='navButton'>
               <Link to="/about">About</Link>
             </div>
         </nav>

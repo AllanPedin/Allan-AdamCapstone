@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+
 }
 
 .App-logo {
@@ -39,4 +40,24 @@
 .navBar {
   display: flex;
   justify-content: space-evenly;
+  background-color: black;
+  height: 40px;
+}
+a{
+  color:blue;
+  text-decoration: none;
+}
+.navButton{
+  padding-top: 9.5px;
+  padding-bottom: 9.5px;
+  border: 1px solid white;
+}
+
+
+html, body {
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  background-color: #b53c00 ;
 }
