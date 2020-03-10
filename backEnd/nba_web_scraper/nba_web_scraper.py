@@ -20,8 +20,5 @@ class Team:
         self.blk = _blk
         self.pf = _pf
         self.pts = _pts
-class Game:
-    def __init__(self,_team1, _team2):
-        self.team1Name = _team1Name
-        self.team2Name = _team2Name
 
+d
