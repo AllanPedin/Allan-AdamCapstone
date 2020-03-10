@@ -1,3 +1,4 @@
+import numpy as np
 #https://stats.nba.com/game/0021900684/
 #Date of game: Jan 25th
 lakers_game_one_total = [35,76,46.1,6,31,19.4,15,23,65.2,6,29,35,23,21,12,1,18,91,-17]
@@ -35,10 +36,10 @@ game4 = [addStats(lakers_game_one_total,lakers_other_game),addStats(philly_game_
 testGame = [addStats(game4[0],lakers_game_two_total),addStats(game4[1],philly_game_two_total)]
 
 def getTrainingGames():
-    return [game1, game2, game3, game4]
+    return np.array([game1, game2, game3, game4])
 def getTrainingLabels():
-    return [1,0,1,0]
+    return np.array([1,0,1,0])
 def getTestGame():
-    return testGame
+    return np.array([testGame])
 
-print(getTrainingGames())
+# print(getTrainingGames())

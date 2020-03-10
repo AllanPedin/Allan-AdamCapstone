@@ -13,9 +13,11 @@ import matplotlib.pyplot as plt
 
 # print(tf.__version__)
 
-# fashion_mnist = keras.datasets.fashion_mnist
+fashion_mnist = keras.datasets.fashion_mnist
 
-# (train_images, train_labels), (test_images, test_labels) = fashion_mnist.load_data()
+(train_images, train_labels), (test_images, test_labels) = fashion_mnist.load_data()
+print(train_images.shape)
+print(train_labels.shape)
 # print(train_images)
 # print("---------")
 # print(train_images[1])
@@ -23,21 +25,23 @@ import matplotlib.pyplot as plt
 # print("---------")
 # print(len(train_labels))
 # print(len(train_images))
-train_games = data.getTrainingGames()
-train_labels = data.getTrainingLabels()
-test_games = data.getTestGame()
+train_games =tf.convert_to_tensor( data.getTrainingGames() )
+train_labels = tf.convert_to_tensor(data.getTrainingLabels() )
+test_games = tf.convert_to_tensor( data.getTestGame() )
 test_labels = [1,2]
 
+print(train_labels.shape)
+print (train_games.shape)
 class_names = ['Win', 'Lose']#left side wins or left side loses
 
 model = keras.Sequential([
-    # keras.layers.Flatten(input_shape=(2, 19)),
-    keras.layers.Dense(128, activation='sigmoid'),#activation function sigmoid is a classic
-    # keras.layers.Dense(10, activation='softmax')#dunno what a softma is
+    keras.layers.Flatten(input_shape=(2, 19)),
+    keras.layers.Dense(128, activation='relu'),
+    keras.layers.Dense(2)
 ])
 
 model.compile(optimizer='adam',
-              loss='mean_squared_error',
+              loss=tf.keras.losses.SparseCategoricalCrossentropy(from_logits=True),
               metrics=['accuracy'])
 
 model.fit(train_games, train_labels, epochs=10) #epochs = times to run over same data
@@ -51,5 +55,5 @@ model.fit(train_games, train_labels, epochs=10) #epochs = times to run over same
 #predict on test data
 predictions = model.predict(test_games)
 
-predictions[0]#see what it predicted
+print(predictions[0])#see what it predicted
 
