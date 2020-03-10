@@ -4,6 +4,8 @@ from __future__ import absolute_import, division, print_function, unicode_litera
 import tensorflow as tf
 from tensorflow import keras
 
+import dataImporter as data
+
 # Helper libraries
 import numpy as np
 import matplotlib.pyplot as plt
