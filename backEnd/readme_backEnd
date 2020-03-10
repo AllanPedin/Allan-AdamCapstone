@@ -1,0 +1,4 @@
+Backend controls Neural Network and data flow.
+
+dataImporter.py - used to import data into the neural network, currently still being toyed around with to ensure we handle all of the data we need
+predictor.py - contains the neural network, right now it is a simple baseline for us to build upon.
