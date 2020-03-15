@@ -1,6 +1,7 @@
 from selenium import webdriver
 #this file
-driver = webdriver.Chrome()
+driver = webdriver.Chrome(executable_path="./chromedriver")
+#may need this:https://www.srcmake.com/home/selenium-python-chromedriver-ubuntu
 driver.get('https://stats.nba.com/schedule/#!?PD=N')
 class Team:
     def __init__(self, _name, _fgm, _fga, _3pm, _3pa, _ftm, _fta, _oreb, _dreb, _reb, _ast, _tov, _stl, _blk, _pf, _pts):
@@ -21,4 +22,3 @@ class Team:
         self.pf = _pf
         self.pts = _pts
 
-d
