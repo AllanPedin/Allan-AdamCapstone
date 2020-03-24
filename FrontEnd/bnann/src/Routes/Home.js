@@ -61,11 +61,12 @@ export default function Home() {
     return <div className='gameList'>
         {
             games.map((game, index)=>{
-                return  (
-                <div className='game'>
-                    <div className='teamLeft'>{game.teamNameLeft}</div>
-                    <div className='teamRight'>{game.teamNameRight}</div>
-                </div>)
+                return (
+                    <div className={index!==games.length-1 ? "game" : "game last"}>
+                        <div className='teamLeft'>{game.teamNameLeft}</div>
+                        <div className='teamRight'>{game.teamNameRight}</div>
+                    </div>
+                )
             })
         }
     </div>;
