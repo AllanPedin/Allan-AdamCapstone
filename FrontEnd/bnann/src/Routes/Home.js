@@ -64,6 +64,7 @@ export default function Home() {
                 return (
                     <div className={index!==games.length-1 ? "game" : "game last"}>
                         <div className='teamLeft'>{game.teamNameLeft}</div>
+                        <div className="vs">vs</div>
                         <div className='teamRight'>{game.teamNameRight}</div>
                     </div>
                 )

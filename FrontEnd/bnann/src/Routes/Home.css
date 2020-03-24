@@ -20,13 +20,15 @@
 .game.last{
     border-bottom: 1px solid black;
 }
+.vs{
+    font-size: 50%;
+    margin: auto;
+    position: absolute;
+    left: 50%;
+}
 .teamLeft{
     font-size: 50%;
-    text-align: left;
-    float: left;
 }
 .teamRight{
     font-size: 50%;
-    text-align: Right;
-    float: right;
 }
