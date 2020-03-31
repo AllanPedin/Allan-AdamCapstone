@@ -10,7 +10,7 @@ driver = webdriver.Chrome()
 
 driver.get('http://stats.nba.com/players/traditional/#!?sort=PTS&dir=-1')
 
-csv_file = open('nbaplayerstats.csv', 'wb')
+csv_file = open('nbaplayerstats.csv', 'w')
 writer = csv.writer(csv_file)
 writer.writerow(['PLAYER', 'TEAM', 'AGE', 'GP', 'W', 'L', 'MIN', 'PTS', 'FGM', 'FGA', 'FG%', '3PM', '3PA', '3P%', 'FTM', 'FTA', 'FT%', 'OREB', 'DREB', 'REB', 'AST', 'TOV', 'STL', 'BLK', 'PF', 'DD2', 'TD3', '+/-'])
 while True:
@@ -147,7 +147,7 @@ def playerstats(tabs):
 def playertable(lin):
     driver.get(lin[0])
     time.sleep(5)
-    csv_files = open(lin[1] + '.csv', 'wb')
+    csv_files = open(lin[1] + '.csv', 'w')
     global writers
     writers = csv.writer(csv_files)
     writers.writerow(['BREAKDOWN', 'GP', 'MIN', 'PTS', 'FGM', 'FGA', 'FG%', '3PM', '3PA', '3P%', 'FTM', 'FTA', 'FT%', 'OREB', 'DREB', 'REB', 'AST', 'TOV', 'STL', 'BLK', 'PF', 'DD2', 'TD3', '+/-'])
@@ -159,7 +159,7 @@ def playertable(lin):
 def deftable(lin):
     driver.get(lin[0].replace('traditional', 'defense-dash'))
     time.sleep(5)
-    csv_files = open(lin[1] + 'Def.csv', 'wb')
+    csv_files = open(lin[1] + 'Def.csv', 'w')
     global writerss
     writerss = csv.writer(csv_files)
     writerss.writerow(['DEFENSE CATEGORY', 'DFGM', 'DFGA', 'DFG%', 'FREQ', 'FG%', 'DIFF%'])
@@ -195,7 +195,7 @@ def gamelogtable(lin):
             button.click()
         except:
             break
-    csv_files = open(lin[1] + 'gamelog.csv', 'wb')
+    csv_files = open(lin[1] + 'gamelog.csv', 'w')
     writersss = csv.writer(csv_files)
     writersss.writerow(['MATCHUP', 'W/L', 'MIN', 'PTS', 'FGM', 'FGA', 'FG%', '3PM', '3PA', '3P%', 'FTM', 'FTA', 'FT%', 'OREB', 'DREB', 'REB', 'AST', 'STL', 'BLK', 'TOV', 'PF', '+/-'])
     tabs = driver.find_elements_by_xpath('/html/body/main/div[2]/div/div/div[3]/div/div/div/nba-stat-table/div[1]/div[1]/table/tbody/tr')

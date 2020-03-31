@@ -151,7 +151,7 @@ def teamstats(tabs):
 def teamtable(lin):
     driver.get(lin[0])
     time.sleep(4)
-    csv_files = open(lin[1] + '.csv', 'wb')
+    csv_files = open(lin[1] + '.csv', 'w')
     global writers
     writers = csv.writer(csv_files)
     writers.writerow(
@@ -215,7 +215,7 @@ def oppstats(tabs):
 def opptable(lin):
     driver.get(lin[0].replace('traditional', 'opponent'))
     time.sleep(4)
-    csv_files = open(lin[1] + 'Opp.csv', 'wb')
+    csv_files = open(lin[1] + 'Opp.csv', 'w')
     global writerss
     writerss = csv.writer(csv_files)
     writerss.writerow(['BREAKDOWN', 'OPP FGM', 'OPP FGA', 'OPP FG%', 'OPP 3PM', 'OPP 3PA', 'OPP 3P%', \
@@ -238,7 +238,7 @@ def gamelogtable(lin):
             button.click()
         except:
             break
-    csv_files = open(lin[1] + 'gamelog.csv', 'wb')
+    csv_files = open(lin[1] + 'gamelog.csv', 'w')
     writersss = csv.writer(csv_files)
     writersss.writerow(['MATCHUP', 'W/L', 'MIN', 'PTS', 'FGM', 'FGA', 'FG%', '3PM', '3PA', '3P%', \
                         'FTM', 'FTA', 'FT%', 'OREB', 'DREB', 'REB', 'AST', 'STL', 'BLK', 'TOV', 'PF'])
