@@ -224,7 +224,7 @@ def opptable(lin):
 
 #Corresponds to [team + gamelog].csv
 def gamelogtable(lin):
-    driver.get(lin[0].replace('traditional', 'gamelogs'))
+    driver.get(lin[0].replace('traditional', 'boxscores-traditional'))
     time.sleep(4)
     while True:
         try:
