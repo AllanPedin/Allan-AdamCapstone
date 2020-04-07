@@ -87,6 +87,7 @@ for team in teams:
 csv_file.close()
 
 
+#Corresponds to [team].csv
 def teamstats(tabs):
     for tab in tabs:
         tab_dict = collections.OrderedDict()
@@ -154,11 +155,13 @@ def teamtable(lin):
     writers.writerow(
         ['BREAKDOWN', 'GP', 'MIN', 'PTS', 'W', 'L', 'WIN%', 'FGM', 'FGA', 'FG%', '3PM', '3PA', '3P%', 'FTM', 'FTA', 'FT%', 'OREB', 'DREB', 'REB', 'AST', 'TOV', 'STL', 'BLK', 'PF', '+/-'])
     for i in range(6):
-        tabl = driver.find_elements_by_xpath('/html/body/main/div[2]/div/div/div[3]/div/div/div/nba-stat-table['+ str(i + 1) + ']/div[1]/div[1]/table/tbody/tr')
+        tabl = driver.find_elements_by_xpath('/html/body/main/div[2]/div/div/div[3]/div/div/div/nba-stat-table['+ str(i + 1) + ']/div[2]/div[1]/table/tbody/tr')
+        #changed second to last div[1] w/ div[2]
         teamstats(tabl)
     csv_files.close()
 
 
+#Corresponds to [team + Opp].csv
 def oppstats(tabs):
     for tab in tabs:
         tab_dict = collections.OrderedDict()
@@ -215,11 +218,13 @@ def opptable(lin):
     writerss = csv.writer(csv_files)
     writerss.writerow(['BREAKDOWN', 'OPP FGM', 'OPP FGA', 'OPP FG%', 'OPP 3PM', 'OPP 3PA', 'OPP 3P%', 'OPP FTM', 'OPP FTA', 'OPP FT%', 'OPP OREB', 'OPP DREB', 'OPP REB', 'OPP AST','OPP TOV', 'OPP STL', 'OPP BLK', 'OPP BLKA', 'OPP PF', 'OPP PTS'])
     for i in range(6):
-        tabl = driver.find_elements_by_xpath('/html/body/main/div[2]/div/div/div[3]/div/div/div/nba-stat-table['+ str(i + 1) + ']/div[1]/div[1]/table/tbody/tr')
+        tabl = driver.find_elements_by_xpath('/html/body/main/div[2]/div/div/div[3]/div/div/div/nba-stat-table['+ str(i + 1) + ']/div[2]/div[1]/table/tbody/tr')
+        #changed second to last div[1] w/ div[2]
         oppstats(tabl)
     csv_files.close()
 
 
+#Corresponds to [team + gamelog].csv
 def gamelogtable(lin):
     driver.get(lin[0].replace('traditional', 'gamelogs'))
     time.sleep(4)
@@ -234,7 +239,8 @@ def gamelogtable(lin):
     writersss = csv.writer(csv_files)
     writersss.writerow(['MATCHUP', 'W/L', 'MIN', 'PTS', 'FGM', 'FGA', 'FG%', '3PM', '3PA', '3P%','FTM', 'FTA', 'FT%', 'OREB', 'DREB', 'REB', 'AST', 'STL', 'BLK', 'TOV', 'PF'])
     tabs = driver.find_elements_by_xpath(
-        '/html/body/main/div[2]/div/div/div[3]/div/div/div/nba-stat-table/div[1]/div[1]/table/tbody/tr')
+        '/html/body/main/div[2]/div/div/div[3]/div/div/div/nba-stat-table/div[2]/div[1]/table/tbody/tr')
+    #changed second to last div[1] w/ div[2]
     for tab in tabs:
         tab_dict = collections.OrderedDict()
 
