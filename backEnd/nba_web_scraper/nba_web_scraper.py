@@ -10,19 +10,16 @@ import csv
 # driver = webdriver.Chrome(executable_path="./chromedriver")
 driver = webdriver.Chrome()
 
-driver.get('http://stats.nba.com/teams/traditional/#!?sort=W_PCT&dir=-1')
+driver.get('https://stats.nba.com/teams/traditional/?sort=W_PCT&dir=-1&Season=2018-19&SeasonType=Regular%20Season')
 time.sleep(2)
-
-# may need this:https://www.srcmake.com/home/selenium-python-chromedriver-ubuntu
-#driver.get('https://stats.nba.com/schedule/#!?PD=N')
 
 csv_file = open('nbateamstats.csv', 'w')
 writer = csv.writer(csv_file)
 writer.writerow(
     ['TEAM', 'GP', 'W', 'L', 'WIN%', 'MIN', 'PTS', 'FGM', 'FGA', 'FG%', '3PM', '3PA', '3P%', 'FTM', 'FTA', 'FT%', 'OREB', 'DREB', 'REB', 'AST', 'TOV', 'STL', 'BLK', 'BLKA', 'PF', 'PFD', '+/-'])
 
-teams = driver.find_elements_by_xpath(
-    '/html/body/main/div[2]/div/div[2]/div/div/nba-stat-table/div[1]/div[1]/table/tbody/tr')
+#Updated - absolute path kinda gross
+teams = driver.find_elements_by_xpath('/html/body/main/div[2]/div/div[2]/div/div/nba-stat-table/div[2]/div[1]/table/tbody/tr')
 
 links = []
 
@@ -155,11 +152,9 @@ def teamtable(lin):
     global writers
     writers = csv.writer(csv_files)
     writers.writerow(
-        ['BREAKDOWN', 'GP', 'MIN', 'PTS', 'W', 'L', 'WIN%', 'FGM', 'FGA', 'FG%', '3PM', '3PA', '3P%', 'FTM', \
-         'FTA', 'FT%', 'OREB', 'DREB', 'REB', 'AST', 'TOV', 'STL', 'BLK', 'PF', '+/-'])
+        ['BREAKDOWN', 'GP', 'MIN', 'PTS', 'W', 'L', 'WIN%', 'FGM', 'FGA', 'FG%', '3PM', '3PA', '3P%', 'FTM', 'FTA', 'FT%', 'OREB', 'DREB', 'REB', 'AST', 'TOV', 'STL', 'BLK', 'PF', '+/-'])
     for i in range(6):
-        tabl = driver.find_elements_by_xpath('/html/body/main/div[2]/div/div/div[3]/div/div/div/nba-stat-table[' \
-                                             + str(i + 1) + ']/div[1]/div[1]/table/tbody/tr')
+        tabl = driver.find_elements_by_xpath('/html/body/main/div[2]/div/div/div[3]/div/div/div/nba-stat-table['+ str(i + 1) + ']/div[1]/div[1]/table/tbody/tr')
         teamstats(tabl)
     csv_files.close()
 
@@ -218,12 +213,9 @@ def opptable(lin):
     csv_files = open(lin[1] + 'Opp.csv', 'w')
     global writerss
     writerss = csv.writer(csv_files)
-    writerss.writerow(['BREAKDOWN', 'OPP FGM', 'OPP FGA', 'OPP FG%', 'OPP 3PM', 'OPP 3PA', 'OPP 3P%', \
-                       'OPP FTM', 'OPP FTA', 'OPP FT%', 'OPP OREB', 'OPP DREB', 'OPP REB', 'OPP AST', \
-                       'OPP TOV', 'OPP STL', 'OPP BLK', 'OPP BLKA', 'OPP PF', 'OPP PTS'])
+    writerss.writerow(['BREAKDOWN', 'OPP FGM', 'OPP FGA', 'OPP FG%', 'OPP 3PM', 'OPP 3PA', 'OPP 3P%', 'OPP FTM', 'OPP FTA', 'OPP FT%', 'OPP OREB', 'OPP DREB', 'OPP REB', 'OPP AST','OPP TOV', 'OPP STL', 'OPP BLK', 'OPP BLKA', 'OPP PF', 'OPP PTS'])
     for i in range(6):
-        tabl = driver.find_elements_by_xpath('/html/body/main/div[2]/div/div/div[3]/div/div/div/nba-stat-table[' \
-                                             + str(i + 1) + ']/div[1]/div[1]/table/tbody/tr')
+        tabl = driver.find_elements_by_xpath('/html/body/main/div[2]/div/div/div[3]/div/div/div/nba-stat-table['+ str(i + 1) + ']/div[1]/div[1]/table/tbody/tr')
         oppstats(tabl)
     csv_files.close()
 
@@ -240,8 +232,7 @@ def gamelogtable(lin):
             break
     csv_files = open(lin[1] + 'gamelog.csv', 'w')
     writersss = csv.writer(csv_files)
-    writersss.writerow(['MATCHUP', 'W/L', 'MIN', 'PTS', 'FGM', 'FGA', 'FG%', '3PM', '3PA', '3P%', \
-                        'FTM', 'FTA', 'FT%', 'OREB', 'DREB', 'REB', 'AST', 'STL', 'BLK', 'TOV', 'PF'])
+    writersss.writerow(['MATCHUP', 'W/L', 'MIN', 'PTS', 'FGM', 'FGA', 'FG%', '3PM', '3PA', '3P%','FTM', 'FTA', 'FT%', 'OREB', 'DREB', 'REB', 'AST', 'STL', 'BLK', 'TOV', 'PF'])
     tabs = driver.find_elements_by_xpath(
         '/html/body/main/div[2]/div/div/div[3]/div/div/div/nba-stat-table/div[1]/div[1]/table/tbody/tr')
     for tab in tabs:
