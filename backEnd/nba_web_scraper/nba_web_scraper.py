@@ -6,8 +6,6 @@ import collections
 import time
 import csv
 
-# this file
-# driver = webdriver.Chrome(executable_path="./chromedriver")
 driver = webdriver.Chrome()
 
 driver.get('https://stats.nba.com/teams/traditional/?sort=W_PCT&dir=-1&Season=2018-19&SeasonType=Regular%20Season')
@@ -219,7 +217,7 @@ def opptable(lin):
     writerss.writerow(['BREAKDOWN', 'OPP FGM', 'OPP FGA', 'OPP FG%', 'OPP 3PM', 'OPP 3PA', 'OPP 3P%', 'OPP FTM', 'OPP FTA', 'OPP FT%', 'OPP OREB', 'OPP DREB', 'OPP REB', 'OPP AST','OPP TOV', 'OPP STL', 'OPP BLK', 'OPP BLKA', 'OPP PF', 'OPP PTS'])
     for i in range(6):
         tabl = driver.find_elements_by_xpath('/html/body/main/div[2]/div/div/div[3]/div/div/div/nba-stat-table['+ str(i + 1) + ']/div[2]/div[1]/table/tbody/tr')
-        #changed second to last div[1] w/ div[2]
+        #changed
         oppstats(tabl)
     csv_files.close()
 
@@ -240,7 +238,7 @@ def gamelogtable(lin):
     writersss.writerow(['MATCHUP', 'W/L', 'MIN', 'PTS', 'FGM', 'FGA', 'FG%', '3PM', '3PA', '3P%','FTM', 'FTA', 'FT%', 'OREB', 'DREB', 'REB', 'AST', 'STL', 'BLK', 'TOV', 'PF'])
     tabs = driver.find_elements_by_xpath(
         '/html/body/main/div[2]/div/div/div[3]/div/div/div/nba-stat-table/div[2]/div[1]/table/tbody/tr')
-    #changed second to last div[1] w/ div[2]
+    #changed
     for tab in tabs:
         tab_dict = collections.OrderedDict()
 
