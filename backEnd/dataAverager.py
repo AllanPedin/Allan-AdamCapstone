@@ -34,28 +34,37 @@ def getFileString(team):#team = 3 character string team name
     }
     return "nba_web_scraper/teamGameLogs/" + fileDict[team]
 
-dateStatsDict = {}
 
-["AtlantaHawksgamelog.csv", "BostonCelticsgamelog.csv", "BrooklynNetsgamelog.csv", "CharlotteHornetsgamelog.csv", "ChicagoBullsgamelog.csv", "ClevelandCavaliersgamelog.csv", "DallasMavericksgamelog.csv", "DenverNuggetsgamelog.csv", "DetroitPistonsgamelog.csv", "GoldenStateWarriorsgamelog.csv", "HoustonRocketsgamelog.csv", "IndianaPacersgamelog.csv", "LAClippersgamelog.csv", "LosAngelesLakersgamelog.csv", "MemphisGrizzliesgamelog.csv", "MiamiHeatgamelog.csv", "MilwaukeeBucksgamelog.csv", "MinnesotaTimberwolvesgamelog.csv", "NewOrleansPelicansgamelog.csv", "NewYorkKnicksgamelog.csv", "OklahomaCityThundergamelog.csv", "OrlandoMagicgamelog.csv", "Philadelphia76ersgamelog.csv", "PhoenixSunsgamelog.csv", "PortlandTrailBlazersgamelog.csv", "SacramentoKingsgamelog.csv", "SanAntonioSpursgamelog.csv", "TorontoRaptorsgamelog.csv", "UtahJazzgamelog.csv", "WashingtonWizardsgamelog.csv"]
+def addStats(stats1, stats2):
+    newStats = []
+    for i in range(len(stats1)):
+        newStats.append(stats1[i]+stats2[i])
+    return newStats
 
 #read stats
+dateteamStatsDict = {}
 def fillDateStatsDict():
     teamLogs = ["AtlantaHawksgamelog.csv", "BostonCelticsgamelog.csv", "BrooklynNetsgamelog.csv", "CharlotteHornetsgamelog.csv", "ChicagoBullsgamelog.csv", "ClevelandCavaliersgamelog.csv", "DallasMavericksgamelog.csv", "DenverNuggetsgamelog.csv", "DetroitPistonsgamelog.csv", "GoldenStateWarriorsgamelog.csv", "HoustonRocketsgamelog.csv", "IndianaPacersgamelog.csv", "LAClippersgamelog.csv", "LosAngelesLakersgamelog.csv", "MemphisGrizzliesgamelog.csv", "MiamiHeatgamelog.csv", "MilwaukeeBucksgamelog.csv", "MinnesotaTimberwolvesgamelog.csv", "NewOrleansPelicansgamelog.csv", "NewYorkKnicksgamelog.csv", "OklahomaCityThundergamelog.csv", "OrlandoMagicgamelog.csv", "Philadelphia76ersgamelog.csv", "PhoenixSunsgamelog.csv", "PortlandTrailBlazersgamelog.csv", "SacramentoKingsgamelog.csv", "SanAntonioSpursgamelog.csv", "TorontoRaptorsgamelog.csv", "UtahJazzgamelog.csv", "WashingtonWizardsgamelog.csv"]
     for teamLog in teamLogs:
         with open("nba_web_scraper/teamGameLogs/" + teamLog , mode='r') as csv_file:
+            previousStats = None
             for row in reversed(list(csv.reader(csv_file))):
                 try:
-                    row[0]
                     print(row[0])
-                    dateStatsDict[row[0][:18]] = 1
-                except:
+                    currentStats = list(row[i] for i in range(len(row))); del currentStats[0]; del currentStats[1]
+                    print(row[0])
+                    dateteamStatsDict[row[0][:18]] = previousStats
+                    previousStats = addStats(previousStats, currentStats)
+
+                except Exception as e:
+                    print(e)
                     print("hererere")#row is empty
                     continue
                 
                 # dateStatsDict[row.co]
     
 fillDateStatsDict()
-print(dateStatsDict)
+print(dateteamStatsDict)
 
 #average stats up to game
 
