@@ -87,7 +87,7 @@ def getDateStatsDict():
                     continue
     return dateteamStatsDict
                     
-dateteamStatsDict = getDateStatsDict()
+dateteamStatsDict = getDateStatsDict() # before date in key team had value stats
 for date, stats in dateteamStatsDict.items():
     print(date, stats)
     if(stats != None):
