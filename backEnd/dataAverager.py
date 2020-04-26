@@ -63,38 +63,56 @@ def averageStats(previousStats, numGames):
                 newStats.append(wins/numGames)
     return newStats
 #read stats
-def getDateStatsDict():
-    dateteamStatsDict = {}
-    teamLogs = ["AtlantaHawksgamelog.csv", "BostonCelticsgamelog.csv", "BrooklynNetsgamelog.csv", "CharlotteHornetsgamelog.csv", "ChicagoBullsgamelog.csv", "ClevelandCavaliersgamelog.csv", "DallasMavericksgamelog.csv", "DenverNuggetsgamelog.csv", "DetroitPistonsgamelog.csv", "GoldenStateWarriorsgamelog.csv", "HoustonRocketsgamelog.csv", "IndianaPacersgamelog.csv", "LAClippersgamelog.csv", "LosAngelesLakersgamelog.csv", "MemphisGrizzliesgamelog.csv", "MiamiHeatgamelog.csv", "MilwaukeeBucksgamelog.csv", "MinnesotaTimberwolvesgamelog.csv", "NewOrleansPelicansgamelog.csv", "NewYorkKnicksgamelog.csv", "OklahomaCityThundergamelog.csv", "OrlandoMagicgamelog.csv", "Philadelphia76ersgamelog.csv", "PhoenixSunsgamelog.csv", "PortlandTrailBlazersgamelog.csv", "SacramentoKingsgamelog.csv", "SanAntonioSpursgamelog.csv", "TorontoRaptorsgamelog.csv", "UtahJazzgamelog.csv", "WashingtonWizardsgamelog.csv"]
-    for teamLog in teamLogs:
-        with open("nba_web_scraper/teamGameLogs/" + teamLog , mode='r') as csv_file:
-            previousStats = None
-            numGames = 0
-            for row in reversed(list(csv.reader(csv_file))):
-                try:
-                    currentStats = list(row[i] for i in range(len(row)))
-                    del currentStats[0]
-                    if previousStats == None:
-                        dateteamStatsDict[row[0][:18]] = None
-                        previousStats = currentStats
-                    else:
-                        dateteamStatsDict[row[0][:18]] = averageStats(previousStats, numGames)
-                        previousStats = addStats(previousStats, currentStats)
-                    numGames += 1
-                except Exception as e:
-                    print(e)
-                    print("hererere")#row is empty
-                    continue
-    return dateteamStatsDict
+teamLogs = ["AtlantaHawksgamelog.csv", "BostonCelticsgamelog.csv", "BrooklynNetsgamelog.csv", "CharlotteHornetsgamelog.csv", "ChicagoBullsgamelog.csv", "ClevelandCavaliersgamelog.csv", "DallasMavericksgamelog.csv", "DenverNuggetsgamelog.csv", "DetroitPistonsgamelog.csv", "GoldenStateWarriorsgamelog.csv", "HoustonRocketsgamelog.csv", "IndianaPacersgamelog.csv", "LAClippersgamelog.csv", "LosAngelesLakersgamelog.csv", "MemphisGrizzliesgamelog.csv", "MiamiHeatgamelog.csv", "MilwaukeeBucksgamelog.csv", "MinnesotaTimberwolvesgamelog.csv", "NewOrleansPelicansgamelog.csv", "NewYorkKnicksgamelog.csv", "OklahomaCityThundergamelog.csv", "OrlandoMagicgamelog.csv", "Philadelphia76ersgamelog.csv", "PhoenixSunsgamelog.csv", "PortlandTrailBlazersgamelog.csv", "SacramentoKingsgamelog.csv", "SanAntonioSpursgamelog.csv", "TorontoRaptorsgamelog.csv", "UtahJazzgamelog.csv", "WashingtonWizardsgamelog.csv"]
+
+dateteamStatsDict = {}
+for teamLog in teamLogs:
+    with open("nba_web_scraper/teamGameLogs/" + teamLog , mode='r') as csv_file:
+        previousStats = None
+        numGames = 0
+        for row in reversed(list(csv.reader(csv_file))):
+            try:
+                currentStats = list(row[i] for i in range(len(row)))
+                del currentStats[0]
+                if previousStats == None:
+                    dateteamStatsDict[row[0][:18]] = None
+                    previousStats = currentStats
+                else:
+                    dateteamStatsDict[row[0][:18]] = averageStats(previousStats, numGames)
+                    previousStats = addStats(previousStats, currentStats)
+                numGames += 1
+            except Exception as e:
+                print("row is empty or column tag")#row is empty
+                continue
                     
-dateteamStatsDict = getDateStatsDict() # before date in key team had value stats
 for date, stats in dateteamStatsDict.items():
     print(date, stats)
     if(stats != None):
         print(len(stats))
 
-#average stats up to game
+def getStatsOfGame(gameString):
+    team1 = gameString[15:18]
+    team2 = gameString[::-1][:3][::-1]
+    print(team1)
+    print(team2)
 
-#average stats againsts average stats
+# average stats againsts average stats
+games = [] #array of tuples first item contains array of 2 game stats, second item contains 1 or 0, 1 means first stat won
+for teamLog in teamLogs:
+    with open("nba_web_scraper/teamGameLogs/" + teamLog , mode='r') as csv_file:
+        for row in reversed(list(csv.reader(csv_file))):
+            try:
+                gameString = row[0]
+                if gameString == "MATCHUP":
+                    raise Exception("Header of csv")
+                print(gameString)
+                getStatsOfGame(gameString)
 
-#save game in csv
+
+            except Exception as e:
+                print("row is empty")
+
+            # game =     
+
+
+# #save game in csv
