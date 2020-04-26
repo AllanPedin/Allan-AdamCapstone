@@ -85,3 +85,36 @@ for game, winner in games:
     print(winner)
 # print(games)
 print(len(games))
+
+trainingGames = []
+trainingLabels = []
+testGames = []
+testLabels = []
+
+from random import randint 
+for game in games:
+    teamStats = game[0]
+    winner = game[1]
+    if randint(0, 100) > 10:
+        trainingGames.append(teamStats)
+        trainingLabels.append(winner)
+    else:
+        testGames.append(teamStats)
+        testLabels.append(winner)
+
+print(testGames)
+print(testLabels)
+print("-------------")
+print(trainingGames)
+print(trainingLabels)
+
+
+def getTraingGames():
+    return trainingGames
+def getTrainingLabels():
+    return trainingLabels
+
+def getTestGames():
+    return testGames
+def getTestLabels():
+    return testLabels
