@@ -93,8 +93,10 @@ for date, stats in dateteamStatsDict.items():
 def getStatsOfGame(gameString):
     team1 = gameString[15:18]
     team2 = gameString[::-1][:3][::-1]
-    print(team1)
-    print(team2)
+    statString1 = gameString[:15] + team1 
+    statString2 = gameString[:15] + team2 
+    print(statString1,statString2)
+    return [dateteamStatsDict[statString1], dateteamStatsDict[statString2]]
 
 # average stats againsts average stats
 games = [] #array of tuples first item contains array of 2 game stats, second item contains 1 or 0, 1 means first stat won
@@ -106,13 +108,15 @@ for teamLog in teamLogs:
                 if gameString == "MATCHUP":
                     raise Exception("Header of csv")
                 print(gameString)
-                getStatsOfGame(gameString)
-
-
+                winner = 1
+                if row[1] == "L":
+                    winner == 0
+                games.append((getStatsOfGame(gameString), winner))#replace 1 with winner of game
+                print(getStatsOfGame(gameString))
             except Exception as e:
-                print("row is empty")
+                print("row is empty or column header")
 
             # game =     
 
-
+print(games)
 # #save game in csv
