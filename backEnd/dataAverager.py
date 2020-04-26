@@ -110,7 +110,7 @@ for teamLog in teamLogs:
                 print(gameString)
                 winner = 1
                 if row[1] == "L":
-                    winner == 0
+                    winner = 0
                 games.append((getStatsOfGame(gameString), winner))#replace 1 with winner of game
                 print(getStatsOfGame(gameString))
             except Exception as e:
@@ -118,5 +118,10 @@ for teamLog in teamLogs:
 
             # game =     
 
-print(games)
+for game, winner in games:
+    print(game[0])
+    print(game[1])
+    print(winner)
+# print(games)
+print(len(games))
 # #save game in csv
