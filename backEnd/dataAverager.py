@@ -93,7 +93,10 @@ testLabels = []
 
 from random import randint 
 for game in games:
-    teamStats = game[0]
+    if game[0][0] == None or game[0][1] == None:
+        teamStats = [[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]]
+    else:
+        teamStats = game[0]
     winner = game[1]
     if randint(0, 100) > 10:
         trainingGames.append(teamStats)
@@ -109,7 +112,7 @@ print(trainingGames)
 print(trainingLabels)
 
 
-def getTraingGames():
+def getTrainingGames():
     return trainingGames
 def getTrainingLabels():
     return trainingLabels

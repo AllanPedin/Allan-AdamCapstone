@@ -5,7 +5,7 @@ import tensorflow as tf
 from tensorflow import keras
 
 # import dataImporter as data
-import TestData as data
+import dataAverager as data
 
 # Helper libraries
 import numpy as np
@@ -27,16 +27,16 @@ print(train_labels.shape)
 # print(len(train_images))
 train_games =tf.convert_to_tensor( data.getTrainingGames() )
 train_labels = tf.convert_to_tensor(data.getTrainingLabels() )
-test_games = tf.convert_to_tensor( data.getTestGame() )
-test_labels = [1,2]
+test_games = tf.convert_to_tensor( data.getTestGames() )
+test_labels = tf.convert_to_tensor( data.getTestLabels() )
 
 print(train_labels.shape)
 print (train_games.shape)
 class_names = ['Win', 'Lose']#left side wins or left side loses
 
 model = keras.Sequential([
-    keras.layers.Flatten(input_shape=(2, 19)),
-    keras.layers.Dense(128, activation='relu'),
+    keras.layers.Flatten(input_shape=(2, 20)),
+    keras.layers.Dense(20, activation='relu'),
     keras.layers.Dense(2)
 ])
 
@@ -44,7 +44,7 @@ model.compile(optimizer='adam',
               loss=tf.keras.losses.SparseCategoricalCrossentropy(from_logits=True),
               metrics=['accuracy'])
 
-model.fit(train_games, train_labels, epochs=10) #epochs = times to run over same data
+model.fit(train_games, train_labels, epochs=1000) #epochs = times to run over same data
 
 #train
 # test_loss, test_acc = model.evaluate(test_games,  test_labels, verbose=2)
