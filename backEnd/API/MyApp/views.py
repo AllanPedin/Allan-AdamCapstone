@@ -7,7 +7,9 @@ from rest_framework import status
 from django.http import JsonResponse
 import json
 @api_view(['GET'])
-
+#import predictor
+#predict games - put games in same format made for training & test data
+#should predict on it
 
 def gamePredictions(request):
     try:
