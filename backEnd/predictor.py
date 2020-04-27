@@ -44,7 +44,7 @@ model.compile(optimizer='adam',
               loss=tf.keras.losses.SparseCategoricalCrossentropy(from_logits=True),
               metrics=['accuracy'])
 
-model.fit(train_games, train_labels, epochs=200) #epochs = times to run over same data
+model.fit(train_games, train_labels, epochs=10) #epochs = times to run over same data
 
 #train
 # test_loss, test_acc = model.evaluate(test_games,  test_labels, verbose=2)
@@ -59,5 +59,13 @@ print('\nTest accuracy:', test_acc)
 #predict on test data
 predictions = model.predict(test_games)
 
-print(predictions[0])#see what it predicted
+print(predictions)#see what it predicted
+print(type(predictions[0]))
 
+
+def predict(games):
+    TFGames = tf.convert_to_tensor(games)
+    return model.predict(TFGames)
+
+predictions = predict(data.getGamesFromCSV("Games_to_predict.csv"))
+print(predictions)

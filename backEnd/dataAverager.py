@@ -121,3 +121,33 @@ def getTestGames():
     return testGames
 def getTestLabels():
     return testLabels
+
+def getGamesFromGamesAndWinners(gamesAndWinners):
+    myGames = []
+    for myGame in gamesAndWinners:
+        if myGame[0][0] == None or myGame[0][1] == None:
+            teamStats = [[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]]
+        else:
+            teamStats = myGame[0]
+        myGames.append(teamStats)
+    return myGames
+        
+    
+
+def getGamesFromCSV(file):
+    gamesToPredict = []
+    with open(file , mode='r') as csv_file:
+        for row in list(csv.reader(csv_file)):
+            try:
+                gameString = row[0]
+                if gameString == "MATCHUP":
+                    raise Exception("Header of csv")
+                winner = 1
+                if row[1] == "L":
+                    winner = 0
+                gamesToPredict.append((getStatsOfGame(gameString), winner))
+            except Exception as e:
+                debugLogger("row is empty or column header")
+    return getGamesFromGamesAndWinners(gamesToPredict)
+
+
