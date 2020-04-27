@@ -67,5 +67,5 @@ def predict(games):
     TFGames = tf.convert_to_tensor(games)
     return model.predict(TFGames)
 
-predictions = predict(data.getGamesFromCSV("Games_to_predict.csv"))
-print(predictions)
+myPredictions = predict(data.getGamesFromCSV("Games_to_predict.csv"))
+print(myPredictions)
