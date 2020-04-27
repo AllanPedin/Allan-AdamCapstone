@@ -16,58 +16,93 @@ def gamePredictions(request):
         data = {
             'games':[ #call to get predictions from NN
                 {
-                    "teamName1": "Milwaukee Bucks",
-                    "teamName2": "Houston Rockets",
-                    "winnerIsTeam1": True
+                    "teamName1": "Atlanta Hawks",
+                    "teamName2": "New York Knicks",
+                    "winnerIsTeam1": False
                 },    
                 {
-                    "teamName1": "LA Clippers",
-                    "teamName2": "Washington Wizards",
+                    "teamName1": "Chicago Bulls",
+                    "teamName2": "Miami Heat",
                     "winnerIsTeam1": True
+                },
+                {
+                    "teamName1": "Detroit Pistons",
+                    "teamName2": "Philadelphia 76ers",
+                    "winnerIsTeam1": False
                 },
                 {
                     "teamName1": "Dallas Mavericks",
-                    "teamName2": "New Orleans Pelicans",
-                    "winnerIsTeam1": True
-                },
-                {
-                    "teamName1": "Los Angeles Lakers",
-                    "teamName2": "Portland Trail Blazers",
-                    "winnerIsTeam1": True
-                },
-                {
-                    "teamName1": "Minnesota Timberwolves",
-                    "teamName2": "San Antonio Spurs",
-                    "winnerIsTeam1": True
-                },
-                {
-                    "teamName1": "Boston Celtics",
-                    "teamName2": "Toronto Raptors",
-                    "winnerIsTeam1": True
-                },
-                {
-                    "teamName1": "Memphis Grizzlies",
-                    "teamName2": "Phoenix Suns",
-                    "winnerIsTeam1": True
-                },
-                {
-                    "teamName1": "Miami Heat",
-                    "teamName2": "Atlanta Hawks",
-                    "winnerIsTeam1": True
-                },
-                {
-                    "teamName1": "Utah Jazz",
-                    "teamName2": "Brooklyn Nets",
-                    "winnerIsTeam1": True
-                },
-                {
-                    "teamName1": "Oklahoma City Thunder",
                     "teamName2": "Denver Nuggets",
                     "winnerIsTeam1": True
                 },
                 {
-                    "teamName1": "Philadelphia 76ers",
+                    "teamName1": "Boston Celtics",
                     "teamName2": "Indiana Pacers",
+                    "winnerIsTeam1": True
+                },
+                {
+                    "teamName1": "Brooklyn Nets",
+                    "teamName2": "Los Angeles Lakers",
+                    "winnerIsTeam1": True
+                },
+                {
+                    "teamName1": "Chicago Bulls",
+                    "teamName2": "Cleveland Cavaliers",
+                    "winnerIsTeam1": True
+                },
+                {
+                    "teamName1": "Golden State Warriors",
+                    "teamName2": "Los Angeles Clippers",
+                    "winnerIsTeam1": False
+                },
+                {
+                    "teamName1": "Houston Rockets",
+                    "teamName2": "Minnesota Timberwolves",
+                    "winnerIsTeam1": True
+                },
+                {
+                    "teamName1": "San Antonio Spurs",
+                    "teamName2": "Dallas Mavericks",
+                    "winnerIsTeam1": True
+                },
+                {
+                    "teamName1": "Memphis Grizzlies",
+                    "teamName2": "Orlando Magic",
+                    "winnerIsTeam1": False
+                },
+                {
+                    "teamName1": "Phoenix Suns",
+                    "teamName2": "Portland Trailblazers",
+                    "winnerIsTeam1": False
+                },
+                {
+                    "teamName1": "Washington Wizards",
+                    "teamName2": "New York Knicks",
+                    "winnerIsTeam1": True
+                },
+                {
+                    "teamName1": "Milwaukee Bucks",
+                    "teamName2": "Denver Nuggets",
+                    "winnerIsTeam1": False
+                },
+                {
+                    "teamName1": "Toronto Rapters",
+                    "teamName2": "Utah Jazz",
+                    "winnerIsTeam1": True
+                },
+                {
+                    "teamName1": "Sacramento Kings",
+                    "teamName2": "Toronto Raptors",
+                    "winnerIsTeam1": False
+                },
+                {
+                    "teamName1": "New Orleans Pelicans",
+                    "teamName2": "Minnesota Timberwolves",
+                    "winnerIsTeam1": True
+                },
+                {
+                    "teamName1": "Oklahoma City Thunder",
+                    "teamName2": "Boston Celtics",
                     "winnerIsTeam1": True
                 }
             ]

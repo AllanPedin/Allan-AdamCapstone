@@ -44,7 +44,7 @@ model.compile(optimizer='adam',
               loss=tf.keras.losses.SparseCategoricalCrossentropy(from_logits=True),
               metrics=['accuracy'])
 
-model.fit(train_games, train_labels, epochs=10) #epochs = times to run over same data
+model.fit(train_games, train_labels, epochs=50) #epochs = times to run over same data
 
 #train
 # test_loss, test_acc = model.evaluate(test_games,  test_labels, verbose=2)
