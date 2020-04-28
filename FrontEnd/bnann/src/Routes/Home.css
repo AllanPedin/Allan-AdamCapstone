@@ -34,12 +34,14 @@
 }
 .winnerLeft{
     font-size: 50%;
+    color: green;
     margin: auto;
     position: absolute;
     left: 25%;
 }
 .winnerRight{
     font-size: 50%;
+    color: green;
     margin: auto;
     position: absolute;
     left: 75%;
