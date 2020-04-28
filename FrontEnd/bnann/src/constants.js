@@ -1,3 +1,3 @@
 module.exports = {
-    API_ENDPOINT : "http://localhost:8000/"
+    API_ENDPOINT : "http://18.219.122.104:8000/"
 }
