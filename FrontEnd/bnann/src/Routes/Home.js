@@ -20,13 +20,27 @@ export default class Home extends React.Component {
         return <div className = 'gameList'>
         {
             this.state.games.map((game, index)=>{
+                if(game.winnerIsTeam1){
                 return (
                     <div className={index!==this.state.games.length-1 ? "game" : "game last"}>
                         <div className='teamLeft'>{game.teamName1}</div>
+                        <div className='winnerLeft'> Winner </div>
                         <div className="vs">vs</div>
                         <div className='teamRight'>{game.teamName2}</div>
                     </div>
                 )
+                }
+                else{
+                    return (
+                        <div className={index!==this.state.games.length-1 ? "game" : "game last"}>
+                            <div className='teamLeft'>{game.teamName1}</div>
+                            <div className="vs">vs</div>
+                            <div className='winnerRight'> Winner </div>
+                            <div className='teamRight'>{game.teamName2}</div>
+                        </div>
+                    )
+                }
+  
             })
         }
     </div>;
