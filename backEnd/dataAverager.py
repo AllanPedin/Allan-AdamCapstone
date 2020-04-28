@@ -73,13 +73,13 @@ for teamLog in teamLogs:
                 winner = 1
                 if row[1] == "L":
                     winner = 0
-                games.append((getStatsOfGame(gameString), winner))
+                games.append((getStatsOfGame(gameString), winner, gameString))
             except Exception as e:
                 debugLogger("row is empty or column header")
 
             # game =     
 
-for game, winner in games:
+for game, winner, gameString in games:
     print(game[0])
     print(game[1])
     print(winner)
@@ -92,18 +92,22 @@ testGames = []
 testLabels = []
 
 from random import randint 
+thisWeeksGames = []
 for game in games:
     if game[0][0] == None or game[0][1] == None:
         teamStats = [[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]]
     else:
         teamStats = game[0]
     winner = game[1]
-    if randint(0, 100) > 10:
-        trainingGames.append(teamStats)
-        trainingLabels.append(winner)
-    else:
+    if "Mar 08" in game[2] or "Mar 09" in game[2] or "Mar 10" in game[2] or "Mar 11" in game[2]:
         testGames.append(teamStats)
         testLabels.append(winner)
+        thisWeeksGames.append(game)
+    else:
+        trainingGames.append(teamStats)
+        trainingLabels.append(winner)
+from numpy import save
+save('./API/matchups', thisWeeksGames)
 
 print(testGames)
 print(testLabels)

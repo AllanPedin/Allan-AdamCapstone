@@ -1,5 +1,6 @@
 from __future__ import absolute_import, division, print_function, unicode_literals
 
+import os
 # TensorFlow and tf.keras
 import tensorflow as tf
 from tensorflow import keras
@@ -32,19 +33,25 @@ test_labels = tf.convert_to_tensor( data.getTestLabels() )
 
 print(train_labels.shape)
 print (train_games.shape)
-class_names = ['Win', 'Lose']#left side wins or left side loses
+class_names = ['lose', 'Win']#left side wins or left side loses
 
 model = keras.Sequential([
     keras.layers.Flatten(input_shape=(2, 20)),
-    keras.layers.Dense(20, activation='relu'),
+    keras.layers.Dense(40, activation='relu'),
     keras.layers.Dense(2)
 ])
 
 model.compile(optimizer='adam',
               loss=tf.keras.losses.SparseCategoricalCrossentropy(from_logits=True),
               metrics=['accuracy'])
+checkpoint_path = "savedModels/cp-{epoch:04d}.ckpt"
+cp_callback = tf.keras.callbacks.ModelCheckpoint(#for saving model at checkpoint epochs
+    filepath=checkpoint_path, 
+    verbose=1, 
+    save_weights_only=True,
+    period=100)
 
-model.fit(train_games, train_labels, epochs=50) #epochs = times to run over same data
+model.fit(train_games, train_labels, epochs=1000) #epochs = times to run over same data
 
 #train
 # test_loss, test_acc = model.evaluate(test_games,  test_labels, verbose=2)
@@ -54,6 +61,9 @@ model.fit(train_games, train_labels, epochs=50) #epochs = times to run over same
 test_loss, test_acc = model.evaluate(test_games,  test_labels, verbose=2)
 
 print('\nTest accuracy:', test_acc)
+
+acc = str(test_acc)
+model.save(".\\savedModels\myModel" + acc)
 
 
 #predict on test data
@@ -67,5 +77,7 @@ def predict(games):
     TFGames = tf.convert_to_tensor(games)
     return model.predict(TFGames)
 
+myPredictions = predict(data.getGamesFromCSV("Games_to_predict.csv"))
+print(myPredictions)
 myPredictions = predict(data.getGamesFromCSV("Games_to_predict.csv"))
 print(myPredictions)

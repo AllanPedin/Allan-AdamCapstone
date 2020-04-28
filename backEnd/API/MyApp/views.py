@@ -5,107 +5,60 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
 from django.http import JsonResponse
+
 import json
+import csv
+
+import numpy as np
+from numpy import load
+
+games = load("matchups.npy", allow_pickle=True)
+deletables = []
+for game in games:
+    if "vs." in game[2]:
+        gameStr = game[2][15:]
+        removeGameStr = gameStr[9:] + " @ " + gameStr[:3]
+        for i in range(len(games)):
+            if removeGameStr in games[i][2]:
+                print("eeeeeee")
+                deletables.append( i )
+                break
+print(deletables)
+games = np.delete(games, deletables,0)
+print(games)
+###################
+import tensorflow as tf
+from tensorflow import keras
+
+model = tf.keras.models.load_model('./Models/myModel0.5740741')#edit model
+gamesToPredict = []
+gameStrings = []
+for game in games:
+    gamesToPredict.append(game[0])
+    gameStrings.append(game[2])
+predictions = model.predict(gamesToPredict)
+print(predictions)
+print(gameStrings)
+dataToSend = []
+for i in range(len(gamesToPredict)):
+    winner = True
+    if predictions[i][0] < predictions[i][1]:
+        winner = False
+    dataToSend.append({
+        "teamName1": gameStrings[i][15:18],
+        "teamName2": gameStrings[i][23:],
+        "winnerIsTeam1": winner,
+        "date": gameStrings[i][:15]
+    })
+
 @api_view(['GET'])
 #import predictor
 #predict games - put games in same format made for training & test data
 #should predict on it
-
 def gamePredictions(request):
     try:
         data = {
-            'games':[ #call to get predictions from NN
-                {
-                    "teamName1": "Atlanta Hawks",
-                    "teamName2": "New York Knicks",
-                    "winnerIsTeam1": False
-                },    
-                {
-                    "teamName1": "Chicago Bulls",
-                    "teamName2": "Miami Heat",
-                    "winnerIsTeam1": True
-                },
-                {
-                    "teamName1": "Detroit Pistons",
-                    "teamName2": "Philadelphia 76ers",
-                    "winnerIsTeam1": False
-                },
-                {
-                    "teamName1": "Dallas Mavericks",
-                    "teamName2": "Denver Nuggets",
-                    "winnerIsTeam1": True
-                },
-                {
-                    "teamName1": "Boston Celtics",
-                    "teamName2": "Indiana Pacers",
-                    "winnerIsTeam1": True
-                },
-                {
-                    "teamName1": "Brooklyn Nets",
-                    "teamName2": "Los Angeles Lakers",
-                    "winnerIsTeam1": True
-                },
-                {
-                    "teamName1": "Chicago Bulls",
-                    "teamName2": "Cleveland Cavaliers",
-                    "winnerIsTeam1": True
-                },
-                {
-                    "teamName1": "Golden State Warriors",
-                    "teamName2": "Los Angeles Clippers",
-                    "winnerIsTeam1": False
-                },
-                {
-                    "teamName1": "Houston Rockets",
-                    "teamName2": "Minnesota Timberwolves",
-                    "winnerIsTeam1": True
-                },
-                {
-                    "teamName1": "San Antonio Spurs",
-                    "teamName2": "Dallas Mavericks",
-                    "winnerIsTeam1": True
-                },
-                {
-                    "teamName1": "Memphis Grizzlies",
-                    "teamName2": "Orlando Magic",
-                    "winnerIsTeam1": False
-                },
-                {
-                    "teamName1": "Phoenix Suns",
-                    "teamName2": "Portland Trailblazers",
-                    "winnerIsTeam1": False
-                },
-                {
-                    "teamName1": "Washington Wizards",
-                    "teamName2": "New York Knicks",
-                    "winnerIsTeam1": True
-                },
-                {
-                    "teamName1": "Milwaukee Bucks",
-                    "teamName2": "Denver Nuggets",
-                    "winnerIsTeam1": False
-                },
-                {
-                    "teamName1": "Toronto Rapters",
-                    "teamName2": "Utah Jazz",
-                    "winnerIsTeam1": True
-                },
-                {
-                    "teamName1": "Sacramento Kings",
-                    "teamName2": "Toronto Raptors",
-                    "winnerIsTeam1": False
-                },
-                {
-                    "teamName1": "New Orleans Pelicans",
-                    "teamName2": "Minnesota Timberwolves",
-                    "winnerIsTeam1": True
-                },
-                {
-                    "teamName1": "Oklahoma City Thunder",
-                    "teamName2": "Boston Celtics",
-                    "winnerIsTeam1": True
-                }
-            ]
+            'games': dataToSend
         }
         return JsonResponse(data)
     except ValueError as e:
