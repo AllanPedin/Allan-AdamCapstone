@@ -2,7 +2,7 @@
     display: flex;
     justify-content: space-evenly;
     flex-direction: column;
-
+    /* background-color: white; */
     margin: auto;
     margin-top: 10px;
     padding: 10px;
@@ -12,6 +12,7 @@
     margin: auto;
     display: flex;
     justify-content: space-between;
+    background-color: whitesmoke;
     border: 1px solid black;
     border-bottom: 0px;
     padding: 10px;
@@ -21,19 +22,23 @@
     border-bottom: 1px solid black;
 }
 .vs{
-    font-size: 50%;
+    font-size: 55%;
+    font-weight: 600;
     margin: auto;
     position: absolute;
     left: 50%;
 }
 .teamLeft{
     font-size: 50%;
+    font-weight: 600;
 }
 .teamRight{
     font-size: 50%;
+    font-weight: 600;
 }
 .winnerLeft{
     font-size: 50%;
+    font-weight: bold;
     color: green;
     margin: auto;
     position: absolute;
@@ -41,6 +46,7 @@
 }
 .winnerRight{
     font-size: 50%;
+    font-weight: bold;
     color: green;
     margin: auto;
     position: absolute;
