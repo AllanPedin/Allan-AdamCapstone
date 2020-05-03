@@ -5,16 +5,16 @@ Neural Net that analyzes and predicts the winner of basketball games.
 ###### How to run
 - download python 3.7 as well as pip, 3.8 does not support tensor flow : https://www.python.org/downloads/
 - cd Allan-AdamCapstone/backEnd/API/
-- - pip install Django
-- - pip install django-cors-headers
-- - pip install djangorestframework
-- - pip install django-common
-- - pip install numpy
-- - pip install tensorflow
-- run local:
-- - python manage.py runserver
-- run on server (make sure your aws instance has all ports opened and no firewalls setup)
-- - python manage.py runserver 0.0.0.0:8000
+  - pip install Django
+  - pip install django-cors-headers
+  - pip install djangorestframework
+  - pip install django-common
+  - pip install numpy
+  - pip install tensorflow
+  run local:
+  - python manage.py runserver
+  run on server (make sure your aws instance has all ports opened and no firewalls setup)
+  - python manage.py runserver 0.0.0.0:8000
 
 ###### nba_web_scraper
 - Scrapes game logs from stats.nba.com to later be input into dataAverager.py then eventually to neural network.
@@ -24,17 +24,17 @@ Neural Net that analyzes and predicts the winner of basketball games.
 - Averages totals of games played up until the given data
 - Reformats data to later be input into the neural network.
 - Data Format:
-- - game
-- - - Team1 stats before game (array of 20 integer stats)
-- - - Team2 stats before game (array of 20 integer stats)
-- - - Winner of game is team 1 (boolean)
+  - game
+    - Team1 stats before game (array of 20 integer stats)
+    - Team2 stats before game (array of 20 integer stats)
+    - Winner of game is team 1 (boolean)
 ###### predictor.py
 - Neural network that analyzes data given through dataAverager.py and then makes predictions on which team will win
 - Trains and saves Neural Networks to be used later by the API
 ###### views.py
 - Uses saved neural net in /myModels to predict on saved games in matchups.npy and then expose these predictions through an API listening on port 8000
 - API Endpoints:
-- - /gamepredictions
+  - /gamepredictions
 
 # Frontend
 ###### How to run
