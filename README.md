@@ -13,6 +13,11 @@ Neural Net that analyzes and predicts the winner of basketball games.
 - Neural network that analyzes data given through dataAverager.py and then makes predictions on which team will win
 
 # Frontend
+######How to run
+- download node.js: https://nodejs.org/en/download/
+- cd Allan-AdamCapstone/FrontEnd/bnann/
+- npm install
+- npm start
 ###### Routes
 - Handles all of the frontend that is displayed other than the navigation bar (Home & About page)
 ###### bnann
