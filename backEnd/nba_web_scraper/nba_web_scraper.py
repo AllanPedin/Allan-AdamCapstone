@@ -97,7 +97,7 @@ def gamelogtable(lin):
     writersss.writerow(['MATCHUP', 'W/L', 'MIN', 'PTS', 'FGM', 'FGA', 'FG%', '3PM', '3PA', '3P%','FTM', 'FTA', 'FT%', 'OREB', 'DREB', 'REB', 'AST', 'STL', 'BLK', 'TOV', 'PF'])
     tabs = driver.find_elements_by_xpath(
         '/html/body/main/div[2]/div/div/div[3]/div/div/div/nba-stat-table/div[2]/div[1]/table/tbody/tr')
-    #changed
+    
     for tab in tabs:
         tab_dict = collections.OrderedDict()
 
