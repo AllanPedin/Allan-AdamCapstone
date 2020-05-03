@@ -11,9 +11,9 @@ Neural Net that analyzes and predicts the winner of basketball games.
   - pip install django-common
   - pip install numpy
   - pip install tensorflow
-  run local:
+- run local:
   - python manage.py runserver
-  run on server (make sure your aws instance has all ports opened and no firewalls setup)
+- run on server (make sure your aws instance has all ports opened and no firewalls setup)
   - python manage.py runserver 0.0.0.0:8000
 
 ###### nba_web_scraper
