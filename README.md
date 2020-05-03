@@ -31,9 +31,9 @@ Neural Net that analyzes and predicts the winner of basketball games.
 ###### predictor.py
 - Defines the structure of the neural net, and trains it based on data from dataAverager.py
 - Final Structure:
-  - 1 input layer (flattener)
-  - 40 Learning layers activation function relu
-  - 2 output layers (outputs being winner of game)
+  - Input Layer
+  - Learning layer : 40 nodes, rectified linear unit activation function
+  - Output layer
 - Training:
   - We trained many neural nets using this file the one we used for the API was trained using
     - 1400 training games
