@@ -13,7 +13,6 @@ writer = csv.writer(csv_file)
 writer.writerow(
     ['TEAM', 'GP', 'W', 'L', 'WIN%', 'MIN', 'PTS', 'FGM', 'FGA', 'FG%', '3PM', '3PA', '3P%', 'FTM', 'FTA', 'FT%', 'OREB', 'DREB', 'REB', 'AST', 'TOV', 'STL', 'BLK', 'BLKA', 'PF', 'PFD', '+/-'])
 
-#Updated - absolute path kinda gross
 teams = driver.find_elements_by_xpath('/html/body/main/div[2]/div/div[2]/div/div/nba-stat-table/div[2]/div[1]/table/tbody/tr')
 
 links = []
@@ -81,7 +80,6 @@ for team in teams:
 
 csv_file.close()
 
-#Corresponds to [team + gamelog].csv
 def gamelogtable(lin):
     driver.get(lin[0].replace('traditional', 'boxscores-traditional'))
     time.sleep(4)
@@ -97,7 +95,7 @@ def gamelogtable(lin):
     writersss.writerow(['MATCHUP', 'W/L', 'MIN', 'PTS', 'FGM', 'FGA', 'FG%', '3PM', '3PA', '3P%','FTM', 'FTA', 'FT%', 'OREB', 'DREB', 'REB', 'AST', 'STL', 'BLK', 'TOV', 'PF'])
     tabs = driver.find_elements_by_xpath(
         '/html/body/main/div[2]/div/div/div[3]/div/div/div/nba-stat-table/div[2]/div[1]/table/tbody/tr')
-    
+
     for tab in tabs:
         tab_dict = collections.OrderedDict()
 
