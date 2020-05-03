@@ -9,6 +9,6 @@ dataAverager.py - Averages totals of games played up until the given data
                 - Reformats data to later be input into the neural network.
 predictor.py    - Neural network that analyzes data given through dataAverager.py and then makes predictions on which team will win
 
-#Frontend
+# Frontend
 Routes          - Handles all of the frontend that is displayed other than the navigation bar (Home & About page)
 bnann           - Contains all of the files needed to display and run the front end, also that link the frontend to the backend
