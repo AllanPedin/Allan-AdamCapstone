@@ -49,7 +49,6 @@ Neural Net that analyzes and predicts the winner of basketball games.
 
 # Frontend
 ![site image](/bnan.PNG)
-Format: ![Website](url)
 ###### How to run
 - download node.js: https://nodejs.org/en/download/
 - cd Allan-AdamCapstone/FrontEnd/bnann/
