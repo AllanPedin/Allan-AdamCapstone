@@ -29,8 +29,19 @@ Neural Net that analyzes and predicts the winner of basketball games.
     - Team2 stats before game (array of 20 integer stats)
     - Winner of game is team 1 (boolean)
 ###### predictor.py
-- Neural network that analyzes data given through dataAverager.py and then makes predictions on which team will win
-- Trains and saves Neural Networks to be used later by the API
+- Defines the structure of the neural net, and trains it based on data from dataAverager.py
+- Final Structure:
+  - 1 input layer (flattener)
+  - 40 Learning layers activation function relu
+  - 2 output layers (outputs being winner of game)
+- Training:
+  - We trained many neural nets using this file the one we used for the API was trained using
+    - 1400 training games
+    - 70 test games
+    - 1000 epochs (times iterated over training games)
+    - Adam Optimizer
+  - And achieved an accuracy of 57.4%
+- Saves Neural Networks to be used later by the API
 ###### views.py
 - Uses saved neural net in /myModels to predict on saved games in matchups.npy and then expose these predictions through an API listening on port 8000
 - API Endpoints:
@@ -46,3 +57,6 @@ Neural Net that analyzes and predicts the winner of basketball games.
 - Handles all of the frontend that is displayed other than the navigation bar (Home & About page)
 ###### bnann
 - Contains all of the files needed to display and run the front end, also that link the frontend to the backend
+###### settings
+- \Allan-AdamCapstone\FrontEnd\bnann\src\constants.js
+  - Make sure api is set to localhost if running locally
