@@ -9,7 +9,8 @@ Neural Net that analyzes and predicts the winner of basketball games.
 ###### dataAverager.py
 - Averages totals of games played up until the given data
                 - Reformats data to later be input into the neural network.
-###### predictor.py    - Neural network that analyzes data given through dataAverager.py and then makes predictions on which team will win
+###### predictor.py
+- Neural network that analyzes data given through dataAverager.py and then makes predictions on which team will win
 
 # Frontend
 ###### Routes
