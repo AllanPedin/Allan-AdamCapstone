@@ -48,7 +48,7 @@ Neural Net that analyzes and predicts the winner of basketball games.
   - /gamepredictions
 
 # Frontend
-![site image](/bnan.png)
+![site image](/bnan.PNG)
 Format: ![Website](url)
 ###### How to run
 - download node.js: https://nodejs.org/en/download/
